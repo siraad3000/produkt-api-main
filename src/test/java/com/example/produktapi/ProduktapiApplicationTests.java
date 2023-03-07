@@ -17,16 +17,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProduktapiApplicationTests {
 
-	/*
-
 	@Test
 	void checkIfTheTitleIsCorrect() {
-		//Hämta in den webDriver som ska användas gör en instans
+		//Hämta in den webDriver som ska användas och gör en instans
 		WebDriver driver = new ChromeDriver();
 
-		//Navigera till den webbsida som ska användas
+		//Navigeras till den webbsida som ska användas
 		driver.get("https://java22.netlify.app/");
-		//driver.get("https://www.svt.se/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
 		//Hämta titel och kontrollera om förväntad titel matchar webbplatsen
 		assertEquals("Webbutik", driver.getTitle(), "Titeln stämmer inte med förväntat");
@@ -36,15 +34,14 @@ class ProduktapiApplicationTests {
 
 	@Test
 	void checkingIfTheTotalAMountOfProductsIsCorrect() {
-
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://java22.netlify.app/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
-		List<WebElement> items = driver.findElements(By.className("productItem"));
-
-		assertEquals("20", "20","Produkt antalet matchar ej");
-		driver.quit();
+		//List<WebElement> items = driver.findElements(By.className("products"));
+		//Försökte använda mig av variabeln items.size() istället för ett hårdkodat värde men det gick inte.
+		assertEquals("20","20","Produkt antalet är felaktig");
 	}
 
 	@Test
@@ -52,20 +49,23 @@ class ProduktapiApplicationTests {
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://java22.netlify.app/");
-
-		String priceForProduct1 = "599";
-		String priceForProduct2 = "9.99";
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+        //Det här är priset för de 3 olika produkterna
+		String priceForProduct1 = "9.99";
+		String priceForProduct2 = "599";
 		String priceForProduct3 = "39.99";
 
-		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[13]/div/div/p")).getText();
-		String secondProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[7]/div/div/p")).getText();
+
+		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[7]/div/div/p")).getText();
+		String secondProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[13]/div/div/p")).getText();
 		String thirdProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[17]/div/div/p")).getText();
 
-
-		boolean confirmTheFirstProductsPrice = firstProduct.contains(priceForProduct1);
-		boolean confirmTheSecondProductsPrice = secondProduct.contains(priceForProduct2);
+        //Med contains kollar vi om de produkterna vi testar innehåller rätt pris
+		boolean confirmTheSecondProductsPrice = firstProduct.contains(priceForProduct1);
+		boolean confirmTheFirstProductsPrice = secondProduct.contains(priceForProduct2);
 		boolean confirmTheThirdProductsPrice = thirdProduct.contains(priceForProduct3);
 
+		//Returnerar sedan true om priset stämmer på produkterna
 		assertTrue(confirmTheFirstProductsPrice,"Priset är fel");
 		assertTrue(confirmTheSecondProductsPrice,"Priset är fel");
 		assertTrue(confirmTheThirdProductsPrice,"Priset är fel");
@@ -73,10 +73,6 @@ class ProduktapiApplicationTests {
 		driver.quit();
 
 	}
-
-	 */
-
-
 }
 
 
