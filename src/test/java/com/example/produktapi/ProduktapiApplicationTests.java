@@ -24,11 +24,9 @@ class ProduktapiApplicationTests {
 
 		//Navigeras till den webbsida som ska användas
 		driver.get("https://java22.netlify.app/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
 		//Hämta titel och kontrollera om förväntad titel matchar webbplatsen
 		assertEquals("Webbutik", driver.getTitle(), "Titeln stämmer inte med förväntat");
-
 		driver.quit();
 	}
 
@@ -37,12 +35,10 @@ class ProduktapiApplicationTests {
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://java22.netlify.app/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
 		//List<WebElement> items = driver.findElements(By.className("products"));
 		//Försökte använda mig av variabeln items.size() istället för ett hårdkodat värde men det gick inte.
 		assertEquals("20","20","Produkt antalet är felaktig");
-
 		driver.quit();
 	}
 
@@ -51,12 +47,11 @@ class ProduktapiApplicationTests {
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://java22.netlify.app/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+
         //Det här är priset för de 3 olika produkterna
 		String priceForProduct1 = "9.99";
 		String priceForProduct2 = "599";
 		String priceForProduct3 = "39.99";
-
 
 		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[7]/div/div/p")).getText();
 		String secondProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[13]/div/div/p")).getText();
@@ -71,7 +66,6 @@ class ProduktapiApplicationTests {
 		assertTrue(confirmTheFirstProductsPrice,"Priset är fel");
 		assertTrue(confirmTheSecondProductsPrice,"Priset är fel");
 		assertTrue(confirmTheThirdProductsPrice,"Priset är fel");
-
 		driver.quit();
 
 	}
