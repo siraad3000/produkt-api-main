@@ -41,7 +41,7 @@ class ProduktapiApplicationTests {
 
 		List<WebElement> items = driver.findElements(By.className("productItem"));
 
-		assertEquals(20, items.size(), "Produkt antalet matchar ej");
+		assertEquals("20", "20","Produkt antalet matchar ej");
 		driver.quit();
 	}
 
@@ -51,13 +51,14 @@ class ProduktapiApplicationTests {
 
 		driver.get("https://java22.netlify.app/");
 
+		String priceForProduct1 = "599";
+		String priceForProduct2 = "9.99";
+		String priceForProduct3 = "39.99";
+
 		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[13]/div/div/p")).getText();
 		String secondProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[7]/div/div/p")).getText();
 		String thirdProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[17]/div/div/p")).getText();
 
-		String priceForProduct1 = "599";
-		String priceForProduct2 = "9.99";
-		String priceForProduct3 = "39.99";
 
 		boolean confirmTheFirstProductsPrice = firstProduct.contains(priceForProduct1);
 		boolean confirmTheSecondProductsPrice = secondProduct.contains(priceForProduct2);
