@@ -14,9 +14,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
 
 class ProduktapiApplicationTests {
-	/*
 
 	@Test
 	void checkIfTheTitleIsCorrect() {
@@ -34,7 +34,6 @@ class ProduktapiApplicationTests {
 	@Test
 	void checkingIfTheTotalAMountOfProductsIsCorrect() {
 		WebDriver driver = new ChromeDriver();
-
 		driver.get("https://java22.netlify.app/");
 
 		//Försökte använda mig av variabeln items.size() istället för ett hårdkodat värde men det gick inte.
@@ -45,7 +44,6 @@ class ProduktapiApplicationTests {
 	@Test
 	void checkingIfThreeDifferentProductsHaveTheCorrectPrice() {
 		WebDriver driver = new ChromeDriver();
-
 		driver.get("https://java22.netlify.app/");
 
         //Det här är priset för de 3 olika produkterna
@@ -63,16 +61,15 @@ class ProduktapiApplicationTests {
 		boolean confirmTheThirdProductsPrice = thirdProduct.contains(priceForProduct3);
 
 		//Returnerar sedan true om priset stämmer på produkterna
-		assertTrue(confirmTheFirstProductsPrice,"Priset är fel");
-		assertTrue(confirmTheSecondProductsPrice,"Priset är fel");
-		assertTrue(confirmTheThirdProductsPrice,"Priset är fel");
+		assertTrue(confirmTheFirstProductsPrice);
+		assertTrue(confirmTheSecondProductsPrice);
+		assertTrue(confirmTheThirdProductsPrice);
 		driver.quit();
 
 	}
-
-	 */
 }
 
+ */
 
 
 
