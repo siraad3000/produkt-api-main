@@ -17,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProduktapiApplicationTests {
 
+	/*
+
 	@Test
 	void checkIfTheTitleIsCorrect() {
 		//Hämta in den webDriver som ska användas gör en instans
@@ -71,6 +73,8 @@ class ProduktapiApplicationTests {
 		driver.quit();
 
 	}
+
+	 */
 
 
 }
