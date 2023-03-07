@@ -42,6 +42,8 @@ class ProduktapiApplicationTests {
 		//List<WebElement> items = driver.findElements(By.className("products"));
 		//Försökte använda mig av variabeln items.size() istället för ett hårdkodat värde men det gick inte.
 		assertEquals("20","20","Produkt antalet är felaktig");
+
+		driver.quit();
 	}
 
 	@Test
