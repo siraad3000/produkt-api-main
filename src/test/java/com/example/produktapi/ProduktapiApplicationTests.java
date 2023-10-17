@@ -6,12 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.Duration;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class ProduktapiApplicationTests {
@@ -55,11 +53,11 @@ class ProduktapiApplicationTests {
 		driver.get("https://java22.netlify.app/");
 
 		//Det här är priset för de 3 olika produkterna
-		String priceForProduct1 = "9.99";
+		String priceForProduct1 = "56.99";
 		String priceForProduct2 = "599";
 		String priceForProduct3 = "39.99";
 
-		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[14]/div/div/p")).getText();
+		String firstProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[15]/div/div/p")).getText();
 		String secondProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[13]/div/div/p")).getText();
 		String thirdProduct = driver.findElement(By.xpath("//*[@id=\"productsContainer\"]/div/div[17]/div/div/p")).getText();
 
