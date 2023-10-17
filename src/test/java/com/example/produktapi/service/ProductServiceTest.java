@@ -5,7 +5,6 @@ import com.example.produktapi.exception.EntityNotFoundException;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +15,6 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.actuate.observability.AutoConfigureObservability;
 
 import java.util.List;
 import java.util.Optional;
@@ -65,9 +63,48 @@ class ProductServiceTest {
 
     @Test
     void givenAnExistingCategory_whenGetProductsByCategory_thenReceivesANonEmptyList() {
-        //Ska inte göras
+
+        String category = "jewelery";
+
         //when
+        underTest.getProductsByCategory(category);
+
         //Then
+        verify(repository,times(1)).findByCategory(category);
+        verifyNoMoreInteractions(repository);
+
+    }
+
+    @DisplayName("productById-normalflöde")
+    @Test
+    void getProductById(){
+        //GIVEN
+        Product testProduct = new Product ("Bracelet", 12.99, "jewelery","glittrig armband","");
+        when(repository.findById(3)).thenReturn(Optional.of(testProduct));
+        testProduct.setId(3);
+
+        //WHEN
+        Product res = underTest.getProductById(3);
+
+        //THEN
+        assertEquals(testProduct,res);
+        //verify(repository,times(1)).findById(id);
+        //verifyNoMoreInteractions(repository);
+        
+    }
+
+    @DisplayName("productByID-felflöde")
+    @Test
+    void getProductByIdWhenIsWrong(){
+        //GIVEN
+        Product testProduct = new Product ("necklace", 13.99, "jewelery","glittrig halsband","");
+        given(repository.findById(testProduct.getId())).willReturn(Optional.empty());
+        //testProduct.setId(2);
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                //When
+                () -> underTest.getProductById(testProduct.getId()));
+        assertEquals("Produkt med id " + testProduct.getId() + " hittades inte",exception.getMessage());
+
     }
 
     @Test

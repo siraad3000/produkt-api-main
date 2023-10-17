@@ -59,10 +59,10 @@ class ProductRepositoryTest {
         String category = "women's clothing";
 
         //When
-        List<Product> listOfCategory= underTest.findByCategory(category);
+        List<Product> listOfProducts= underTest.findByCategory(category);
 
         //Then
-        Assertions.assertFalse(listOfCategory.isEmpty());
+        Assertions.assertFalse(listOfProducts.isEmpty());
     }
 
     @Test
@@ -76,6 +76,19 @@ class ProductRepositoryTest {
 
         //Then
         Assertions.assertTrue(listOfCategory.isEmpty());
+
+    }
+
+    @Test
+    void getProductById(){
+        //Given
+        Integer id = 5;
+        //when
+         Optional<Product> listOfProductId = underTest.findById(id);
+        //Then
+        Assertions.assertFalse(listOfProductId.isEmpty());
+        System.out.println("Här är deeeeeeen");
+        System.out.println(listOfProductId);
 
     }
 

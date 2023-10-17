@@ -30,6 +30,8 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
+
+    //kvar
     public Product getProductById(Integer id) {
 
         Optional<Product> product = productRepository.findById(id);
@@ -66,5 +68,8 @@ public class ProductService {
             throw new EntityNotFoundException(id);
         }
         productRepository.deleteById(id);
+    }
+
+    public void getProductsByCategory() {
     }
 }
