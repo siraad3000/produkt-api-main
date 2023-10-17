@@ -2,6 +2,7 @@ package com.example.produktapi.repository;
 
 import com.example.produktapi.model.Product;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -72,22 +73,36 @@ class ProductRepositoryTest {
         String category = "jewelerysss";
 
         //When
-        List<Product> listOfCategory= underTest.findByCategory(category);
+        List<Product> listOfProducts= underTest.findByCategory(category);
 
         //Then
-        Assertions.assertTrue(listOfCategory.isEmpty());
+        Assertions.assertTrue(listOfProducts.isEmpty());
 
     }
 
+    //Test som skulle kompletteras
     @Test
-    void getProductById(){
+    @DisplayName("normalflöde")
+    void givenCorrectProductId_whenSearchingExistingProductId_thenReturnFalseEmptyOptional(){
         //Given
         Integer id = 5;
         //when
-         Optional<Product> listOfProductId = underTest.findById(id);
+        Optional<Product> listOfProductId = underTest.findById(id);
         //Then
         Assertions.assertFalse(listOfProductId.isEmpty());
-        System.out.println("Här är deeeeeeen");
+        System.out.println(listOfProductId);
+
+    }
+    //Test som skulle kompletteras
+    @Test
+    @DisplayName("felflöde")
+    void givenIncorrectProductId_whenSearchingForNonExistingProductId_thenReturnTrueEmptyOptional(){
+        //Given
+        Integer id = 22;
+        //when
+        Optional<Product> listOfProductId = underTest.findById(id);
+        //Then
+        Assertions.assertTrue(listOfProductId.isEmpty());
         System.out.println(listOfProductId);
 
     }
